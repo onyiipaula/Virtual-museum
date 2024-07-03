@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Museum Tour</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .map-section {
+            position: relative;
+            overflow: hidden;
+        }
+        .map-section img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        .map-section div {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(34, 197, 94, 0.5); /* green overlay */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2xl;
+            font-weight: bold;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .map-section:hover div {
+            opacity: 1;
+        }
+        .modal {
+            transition: opacity 0.25s ease;
+        }
+        .modal-active {
+            overflow-x: hidden;
+            overflow-y: visible !important;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+<!-- Header -->
+<header class="bg-black text-white py-4">
+    <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-2xl font-bold">Virtual Museum Tour</h1>
+        <nav>
+            <a href="#museum-map" class="mx-2 hover:text-gray-400">Map</a>
+            <a href="#timeline" class="mx-2 hover:text-gray-400">Timeline</a>
+            <a href="#testimonials" class="mx-2 hover:text-gray-400">Testimonials</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="container mx-auto py-8 px-4">
+
+    <!-- Interactive Museum Map -->
+    <section id="museum-map" class="mb-12">
+        <h2 class="text-3xl font-bold mb-4 text-red-600">Interactive Museum Map</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="map-section" onclick="openModal('exhibit1')">
+                <img src="./enyi.jpg" alt="Masquerade from Enugu West">
+                <div>Enyikwonwa masquerade</div>
+            </div>
+            <div class="map-section" onclick="openModal('exhibit2')">
+                <img src="./ijele.jpg" alt="Masquerade from Enugu West">
+                <div>ijele masquerade</div>
+            </div>
+            <div class="map-section" onclick="openModal('exhibit3')">
+                <img src="./Odo.jpg" alt="Masquerade from Enugu North">
+                <div>odo masquerade</div>
+            </div>
+            <div class="map-section" onclick="openModal('exhibit4')">
+                <img src="./mgbedike.jpg" alt="Masquerade from Enugu North">
+                <div>mgbedike masquerade</div>
+            </div>
+            <div class="map-section" onclick="openModal('exhibit5')">
+                <img src="./adanma.jpeg" alt="Masquerade from Enugu East">
+                <div>Adanma masquerade</div>
+            </div>
+            <div class="map-section" onclick="openModal('exhibit6')">
+                <img src="./izaga.jpg" alt="Masquerade from Enugu East">
+                <div>Izaga masquerade</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="mb-12">
+        <h2 class="text-3xl font-bold mb-4 text-red-600">Timeline</h2>
+        <div class="bg-white p-4 rounded shadow-md">
+            <ul class="space-y-4">
+                <li class="flex items-start">
+                    <div class="flex-shrink-0 h-10 w-10 bg-red-600 rounded-full flex items-center justify-center text-white font-bold">1</div>
+                    <div class="ml-4">
+                        <h3 class="text-xl font-bold">Masquerade Tradition Begins</h3>
+                        <p class="text-gray-600">The tradition of masquerades in Enugu State dates back centuries, playing a vital role in cultural festivals.</p>
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <div class="flex-shrink-0 h-10 w-10 bg-red-600 rounded-full flex items-center justify-center text-white font-bold">2</div>
+                    <div class="ml-4">
+                        <h3 class="text-xl font-bold">Significance of Masquerades</h3>
+                        <p class="text-gray-600">Masquerades symbolize ancestral spirits and are celebrated with vibrant performances and rituals.</p>
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <div class="flex-shrink-0 h-10 w-10 bg-red-600 rounded-full flex items-center justify-center text-white font-bold">3</div>
+                    <div class="ml-4">
+                        <h3 class="text-xl font-bold">Artistic Innovation</h3>
+                        <p class="text-gray-600">Masquerade costumes and performances evolve, blending traditional elements with contemporary artistic expression.</p>
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <div class="flex-shrink-0 h-10 w-10 bg-red-600 rounded-full flex items-center justify-center text-white font-bold">4</div>
+                    <div class="ml-4">
+                        <h3 class="text-xl font-bold">Tourism and Education</h3>
+                        <p class="text-gray-600">Masquerade performances attract tourists and serve as educational tools to teach younger generations about their cultural heritage.</p>
+                    </div>
+                </li>
+                <!-- Add more timeline events as needed -->
+            </ul>
+        </div>
+    </section>
+
+    <!-- Visitor Testimonials -->
+    <section id="testimonials" class="mb-12">
+        <h2 class="text-3xl font-bold mb-4 text-red-600">Visitor Testimonials</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="bg-white p-4 rounded shadow-md">
+                <p class="text-gray-800">"The virtual tour of the Enugu masquerades was fascinating. It felt like being there in person."</p>
+                <p class="text-gray-600 text-right">- John Doe</p>
+            </div>
+            <div class="bg-white p-4 rounded shadow-md">
+                <p class="text-gray-800">"Incredibly detailed and informative. A great way to learn about the rich culture of Enugu."</p>
+                <p class="text-gray-600 text-right">- Jane Smith</p>
+            </div>
+            <div class="bg-white p-4 rounded shadow-md">
+                <p class="text-gray-800">"A beautifully designed virtual museum that captures the essence of Enugu's traditions."</p>
+                <p class="text-gray-600 text-right">- Mark Wilson</p>
+            </div>
+            <!-- Add more testimonials as needed -->
+        </div>
+    </section>
+
+</main>
+
+<!-- Exhibit Details Modals -->
+<div id="exhibit1-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+    <div class="bg-white w-full max-w-lg p-6 rounded-lg shadow-lg relative">
+        <h3 class="text-2xl font-bold mb-4 text-red-600">Enugu West 1</h3>
+        <img src="https://placehold.co/800x600" alt="Masquerade from Enugu West" class="w-full mb-4">
+        <p class="text-gray-700 mb-4">Enyi kwo nwa is a popular masquerade among the igbo of Enugu state, The masquerade which are usually two in number are accompanied by it cult members. While the masquerade perform to to tone of the music being played by its cult member, its charm carrier clears the way for them.</p>
+        <p class="text-gray-700 mb-4">More information about the traditions, history, and cultural significance.</p>
+        <button onclick="closeModal('exhibit1')" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">&times;</button>
+    </div>
+</div>
+<div id="exhibit2-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+    <div class="bg-white w-full max-w-lg p-6 rounded-lg shadow-lg relative">
+        <h3 class="text-2xl font-bold mb-4 text-red-600">Enugu West 2</h3>
+        <img src="https://placehold.co/800x600" alt="Masquerade from Enugu West" class="w-full mb-4">
+        <p class="text-gray-700 mb-4">Detailed description of the masquerade from Enugu West Zone 2.</p>
+        <p class="text-gray-700 mb-4">More information about the traditions, history, and cultural significance.</p>
+        <button onclick="closeModal('exhibit2')" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">&times;</button>
+    </div>
+</div>
+<div id="exhibit3-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+    <div class="bg-white w-full max-w-lg p-6 rounded-lg shadow-lg relative">
+        <h3 class="text-2xl font-bold mb-4 text-red-600">Ennugu West 1</h3>
+        <img src="https://placehold.co/400x300" alt="Masquerade from Enugu West" class="w-full mb-4">
+        <p class="text-gray-700 mb-4">Detailed description of the masquerade from Enugu West Zone 1.</p>
+        <p class="text-gray-700 mb-4">More information about the traditions, history, and cultural significance.</p>
+        <button onclick="closeModal('exhibit1')" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">&times;</button>
+    </div>
+</div>
+<div id="exhibit2-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+    <div class="bg-white w-full max-w-lg p-6 rounded-lg shadow-lg relative">
+        <h3 class="text-2xl font-bold mb-4 text-red-600">Enugu West 2</h3>
+        <img src="https://placehold.co/400x300" alt="Masquerade from Enugu West" class="w-full mb-4">
+        <p class="text-gray-700 mb-4">Detailed description of the masquerade from Enugu West Zone 2.</p>
+        <p class="text-gray-700 mb-4">More information about the traditions, history, and cultural significance.</p>
+        <button onclick="closeModal('exhibit2')" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">&times;</button>
+    </div>
+</div>
+<div id="exhibit3-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+    <div class="bg-white w-full max-w-lg p-6 rounded-lg shadow-lg relative">
+        <h3 class="text-2xl font-bold mb-4 text-red-600">Enugu North 1</h3>
+        <img src="https://placehold.co/400x300" alt="Masquerade from Enugu North" class="w-full mb-4">
+        <p class="text-gray-700 mb-4">Detailed description of the masquerade from Enugu North Zone 1.</p>
+        <p class="text-gray-700 mb-4">More information about the traditions, history, and cultural significance.</p>
+        <button onclick="closeModal('exhibit3')" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">&times;</button>
+    </div>
+</div>
+<div id="exhibit4-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+    <div class="bg-white w-full max-w-lg p-6 rounded-lg shadow-lg relative">
+        <h3 class="text-2xl font-bold mb-4 text-red-600">Enugu North 2</h3>
+        <img src="https://placehold.co/400x300" alt="Masquerade from Enugu North" class="w-full mb-4">
+        <p class="text-gray-700 mb-4">Detailed description of the masquerade from Enugu North Zone 2.</p>
+        <p class="text-gray-700 mb-4">More information about the traditions, history, and cultural significance.</p>
+        <button onclick="closeModal('exhibit4')" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">&times;</button>
+    </div>
+</div>
+<div id="exhibit5-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+    <div class="bg-white w-full max-w-lg p-6 rounded-lg shadow-lg relative">
+        <h3 class="text-2xl font-bold mb-4 text-red-600">Enugu East 1</h3>
+        <img src="https://placehold.co/400x300" alt="Masquerade from Enugu East" class="w-full mb-4">
+        <p class="text-gray-700 mb-4">Adamma masquerade is a contemporary maiden spirit mask worn by men. Adamma, which means "beautiful woman" and is usually presented to a family's first female child, is the name of the ceremonial masquerade. People frequently question whether the man wearing the mask is indeed a man because she constantly looks stunning in colorful attire and dances so smoothly.</p>
+        <p class="text-gray-700 mb-4">More information about the traditions, history, and cultural significance.</p>
+        <button onclick="closeModal('exhibit5')" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">&times;</button>
+    </div>
+</div>
+<div id="exhibit6-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+    <div class="bg-white w-full max-w-lg p-6 rounded-lg shadow-lg relative">
+        <h3 class="text-2xl font-bold mb-4 text-red-600">Enugu East 2</h3>
+        <img src="https://placehold.co/400x300" alt="Masquerade from Enugu East" class="w-full mb-4">
+        <p class="text-gray-700 mb-4">Detailed description of the masquerade from Enugu East Zone 2.</p>
+        <p class="text-gray-700 mb-4">More information about the traditions, history, and cultural significance.</p>
+        <button onclick="closeModal('exhibit6')" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">&times;</button>
+    </div>
+</div>
+
+<script>
+    function openModal(id) {
+        document.getElementById(id + '-modal').classList.remove('hidden');
+    }
+
+    function closeModal(id) {
+        document.getElementById(id + '-modal').classList.add('hidden');
+    }
+</script>
+
+</body>
+</html>
